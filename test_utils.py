@@ -1,7 +1,7 @@
 """This module contains unit tests for the utils.py module."""
+
 import pytest
 import utils
-
 
 
 @pytest.mark.parametrize(
