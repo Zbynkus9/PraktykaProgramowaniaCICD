@@ -36,3 +36,25 @@ def test_divide(a, b, expected):
     """Test of dividing two numbers."""
     result = utils.divide(a, b)
     assert result == expected
+
+
+@pytest.mark.parametrize(
+    "n, expected", [(0, "0"), (1, "1"), (5, "101"), (10, "1010"), (100, "1100100")]
+)
+def test_int_to_bin_correctness(n, expected):
+    """Test conversion of integer to binary."""
+    assert utils.int_to_bin(n) == expected
+
+
+@pytest.mark.parametrize("n", [-1, -50, 101, 1000])
+def test_int_to_bin_out_of_range(n):
+    """Test for integer out of range."""
+    with pytest.raises(ValueError):
+        utils.int_to_bin(n)
+
+
+@pytest.mark.parametrize("n", [5.5, -3.14, "10", None])
+def test_int_to_bin_not_natural(n):
+    """Test for non-natural numbers."""
+    with pytest.raises(TypeError):
+        utils.int_to_bin(n)
